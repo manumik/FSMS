@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Professors</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th cope="col">Title</th>
+      <th cope="col">Surname</th>
+      <th cope="col">Name</th>
+      <th cope="col">Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @professors.each do |professor| %>
+      <tr>
+        <td><%= professor.title %></td>
+        <td><%= professor.surname %></td>
+        <td><%= professor.name %></td>
+        <td><%= professor.email %></td>
+        <td><%= link_to 'Show', professor %></td>
+        <td><%= link_to 'Edit', edit_professor_path(professor) %></td>
+        <td><%= link_to 'Destroy', professor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Professor', new_professor_path %>

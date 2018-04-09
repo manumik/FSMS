@@ -1,0 +1,62 @@
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :bibnummer %>
+    <%= form.number_field :bibnummer, id: :student_bibnummer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname %>
+    <%= form.text_field :surname, id: :student_surname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :student_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel %>
+    <%= form.text_field :tel, id: :student_tel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :student_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :percentage %>
+    <%= form.number_field :percentage, id: :student_percentage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :studiengang %>
+    <%= form.collection_select :kategorie, @studiengangs, :id, :name, :prompt => "Bitte Studiengang auswählen" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kundenstatus %>
+    <%= form.collection_select :kategorie, @studenten_statuss, :id, :status, :prompt => "Bitte Status auswählen" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ersteinschreibung %>
+    <%= form.datetime_select :ersteinschreibung, id: :student_ersteinschreibung %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

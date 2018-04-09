@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bibnummer: 1
+  surname: MyString
+  name: MyString
+  tel: MyString
+  email: MyString
+  percentage: 1
+  studiengang: 1
+  kundenstatus: 1
+  ersteinschreibung: 2018-04-06 11:55:56
+
+two:
+  bibnummer: 1
+  surname: MyString
+  name: MyString
+  tel: MyString
+  email: MyString
+  percentage: 1
+  studiengang: 1
+  kundenstatus: 1
+  ersteinschreibung: 2018-04-06 11:55:56

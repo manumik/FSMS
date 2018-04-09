@@ -1,0 +1,22 @@
+<%= form_with(model: dateien_kategorien, local: true) do |form| %>
+  <% if dateien_kategorien.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dateien_kategorien.errors.count, "error") %> prohibited this dateien_kategorien from being saved:</h2>
+
+      <ul>
+      <% dateien_kategorien.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :dateien_kategorien_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

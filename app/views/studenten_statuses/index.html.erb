@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Studenten Statuses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @studenten_statuses.each do |studenten_status| %>
+      <tr>
+        <td><%= studenten_status.status %></td>
+        <td><%= link_to 'Show', studenten_status %></td>
+        <td><%= link_to 'Edit', edit_studenten_status_path(studenten_status) %></td>
+        <td><%= link_to 'Destroy', studenten_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Studenten Status', new_studenten_status_path %>

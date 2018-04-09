@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Studiengangs</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th cope="col">Name</th>
+      <th cope="col" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @studiengangs.each do |studiengang| %>
+      <tr>
+        <td><%= studiengang.name %></td>
+        <td><%= link_to 'Show', studiengang %></td>
+        <td><%= link_to 'Edit', edit_studiengang_path(studiengang) %></td>
+        <td><%= link_to 'Destroy', studiengang, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Studiengang', new_studiengang_path %>

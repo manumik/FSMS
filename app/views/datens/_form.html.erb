@@ -1,0 +1,86 @@
+<%= form_with(model: daten, local: true) do |form| %>
+  <% if daten.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(daten.errors.count, "error") %> prohibited this daten from being saved:</h2>
+
+      <ul>
+      <% daten.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :daten_name %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :kategorie %>
+    <%=
+      #form.number_field :kategorie, id: :daten_kategorie
+    %>
+    <%= form.collection_select :kategorie, @dateien_kategoriens, :id, :name, :prompt => "Bitte Kategorie auswählen" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :studiengang %>
+    <%= form.collection_select :kategorie, @studiengangs, :id, :name, :prompt => "Bitte Studiengang auswählen" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modul %>
+    <%= form.collection_select :kategorie, @moduls, :id, :name, :prompt => "Bitte Modul auswählen" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester %>
+    <%= form.text_field :semester, id: :daten_semester %>
+  </div>
+
+  <div class="field">
+    <%= form.label :professor %>
+    <%= form.collection_select :kategorie, @professors, :id, :surname, :prompt => "Bitte Professor auswählen" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :autor %>
+    <%= form.text_field :autor, id: :daten_autor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :druckbar %>
+    <%= form.check_box :druckbar, id: :daten_druckbar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sichtbar %>
+    <%= form.check_box :sichtbar, id: :daten_sichtbar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sendbar %>
+    <%= form.check_box :sendbar, id: :daten_sendbar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinzugefuegt %>
+    <%= form.datetime_select :hinzugefuegt, id: :daten_hinzugefuegt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preis %>
+    <%= form.text_field :preis, id: :daten_preis %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dateipfad %>
+    <%= form.text_field :dateipfad, id: :daten_dateipfad %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

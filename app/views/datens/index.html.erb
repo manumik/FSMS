@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h2 style="text-align:center;">Daten</h1>
+  <br />
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Kategorie</th>
+      <th scope="col">Studiengang</th>
+      <th scope="col">Modul</th>
+      <th cope="col">Semester</th>
+      <th cope="col">Professor</th>
+      <th cope="col">Autor</th>
+      <th cope="col">Druckbar</th>
+      <th cope="col">Sichtbar</th>
+      <th cope="col">Sendbar</th>
+      <th cope="col">Hinzugefügt</th>
+      <th cope="col">Preis</th>
+      <th scope="col">Dateipfad</th>
+      <th cope="col" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @datens.each do |daten| %>
+      <tr>
+        <td><%= daten.name %></td>
+        <td><%= daten.kategorie %></td>
+        <td><%= daten.studiengang %></td>
+        <td><%= daten.modul %></td>
+        <td><%= daten.semester %></td>
+        <td><%= daten.professor %></td>
+        <td><%= daten.autor %></td>
+        <td><%= daten.druckbar %></td>
+        <td><%= daten.sichtbar %></td>
+        <td><%= daten.sendbar %></td>
+        <td><%= daten.hinzugefuegt %></td>
+        <td><%= daten.preis %></td>
+        <td><%= daten.dateipfad %></td>
+        <td><%= link_to 'Show', daten %></td>
+        <td><%= link_to 'Edit', edit_daten_path(daten) %></td>
+        <td><%= link_to 'Destroy', daten, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<button type="button" class="btn btn-success"><%= link_to 'Neuer Eintrag', new_daten_path %></button>

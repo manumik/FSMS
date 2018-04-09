@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FS06MS</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div style="height:40px;width: 100%; background-color:#00618e;font-size: 32px;">
+      <center>FS06</center>
+    </div>
+    <nav class="nav" style="height: 40px;background-color:#00618e;">
+      <a class="nav-link" href="/kasse/kasse" style="color: #ffffff;">Kasse</a>
+      <a class="nav-link" href="#" style="color: #ffffff;">Formulare</a>
+      <a class="nav-link" href="#" style="color: #ffffff;">Ausleihen</a>
+      <a class="nav-link" href="#" style="color: #ffffff;">Drucken</a>
+      <a class="nav-link  dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff;">Daten</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/datens">Daten</a>
+        <a class="dropdown-item" href="/dateien_kategoriens">Kategorien</a>
+        <a class="dropdown-item" href="/moduls">Module</a>
+        <a class="dropdown-item" href="/studiengangs">Studiengänge</a>
+        <a class="dropdown-item" href="/professors">Proffesoren</a>
+        <a class="dropdown-item" href="/students">Studenten</a>
+      </div>
+    </nav>
+    <div id="login" style="height:40px;">
+      Hier ist der Login!
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

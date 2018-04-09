@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dateien Kategoriens</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dateien_kategoriens.each do |dateien_kategorien| %>
+      <tr>
+        <td><%= dateien_kategorien.name %></td>
+        <td><%= link_to 'Show', dateien_kategorien %></td>
+        <td><%= link_to 'Edit', edit_dateien_kategorien_path(dateien_kategorien) %></td>
+        <td><%= link_to 'Destroy', dateien_kategorien, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button type="button" class="btn btn-success"><%= link_to 'New Dateien Kategorien', new_dateien_kategorien_path %></button>

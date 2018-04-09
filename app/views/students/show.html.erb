@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bibnummer:</strong>
+  <%= @student.bibnummer %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @student.surname %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @student.tel %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @student.percentage %>
+</p>
+
+<p>
+  <strong>Studiengang:</strong>
+  <%= @student.studiengang %>
+</p>
+
+<p>
+  <strong>Kundenstatus:</strong>
+  <%= @student.kundenstatus %>
+</p>
+
+<p>
+  <strong>Ersteinschreibung:</strong>
+  <%= @student.ersteinschreibung %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

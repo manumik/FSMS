@@ -1,0 +1,2 @@
+module DateienKategoriensHelper
+end
