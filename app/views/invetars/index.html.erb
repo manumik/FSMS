@@ -1,0 +1,54 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<h1>Invetars</h1>
+
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Invetarnummer</th>
+      <th>Typ</th>
+      <th>Kunden</th>
+      <th>Beschreibung</th>
+      <th>ausleihbar</th>
+      <th>pfand</th>
+      <th>Backat</th>
+      <th colspan="7"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invetars.each do |invetar| %>
+      <tr>
+        <td><%= invetar.invetarnummer %></td>
+        <td><%= if !invetar.typ.blank?
+                    if @invetar_typs.exists?(invetar.typ)
+                      @invetar_typs.find(invetar.typ).name
+                    else
+
+                        daten.kategorie
+                    end
+
+                  end %></td>
+        <td><%= invetar.kunden %></td>
+        <td><%= invetar.beschreibung %></td>        
+        <td><%= invetar.ausleihbar %></td>
+        <td><%= invetar.pfand %></td>
+        <td><%= invetar.backat %></td>
+        <td><%= link_to 'Show', invetar %></td>
+        <td><%= link_to 'Edit', edit_invetar_path(invetar) %></td>
+        <td><%= link_to 'Destroy', invetar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invetar', new_invetar_path %>
+
+</div>
+</div>
+</div>

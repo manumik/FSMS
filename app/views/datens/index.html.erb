@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
 
 <h2 style="text-align:center;">Daten</h1>
   <br />
@@ -6,6 +9,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Kategorie</th>
       <th scope="col">Studiengang</th>
@@ -19,6 +23,7 @@
       <th cope="col">Hinzugefügt</th>
       <th cope="col">Preis</th>
       <th scope="col">Dateipfad</th>
+      <th scope="col">Seiten</th>
       <th cope="col" colspan="3"></th>
     </tr>
   </thead>
@@ -26,12 +31,38 @@
   <tbody>
     <% @datens.each do |daten| %>
       <tr>
+        <td><%= daten.id %></td>
         <td><%= daten.name %></td>
-        <td><%= daten.kategorie %></td>
-        <td><%= daten.studiengang %></td>
-        <td><%= daten.modul %></td>
+        <td><%= if !daten.kategorie.blank?
+                    if @kaigorie.exists?(daten.kategorie)
+                      @kaigorie.find(daten.kategorie).name
+                    else
+
+                        daten.kategorie
+                    end
+
+                  end %></td>
+        <td><%= if !daten.studiengang.blank?
+                    if @Studiengang.exists?(daten.studiengang)
+                      @Studiengang.find(daten.studiengang).name
+                      else
+                      daten.studiengang
+                    end
+                  end %></td>
+        <td><%= if !daten.modul.blank?
+                   if @Modul.exists?(daten.modul)
+                     @Modul.find(daten.modul).name
+                   end
+                   end %></td>
         <td><%= daten.semester %></td>
-        <td><%= daten.professor %></td>
+        <td><%= if !daten.professor.blank?
+                   if @prof.exists?(daten.professor)
+                      @prof.find(daten.professor).title
+                      @prof.find(daten.professor).surname
+                      @prof.find(daten.professor).name
+                   end
+
+                  end%></td>
         <td><%= daten.autor %></td>
         <td><%= daten.druckbar %></td>
         <td><%= daten.sichtbar %></td>
@@ -39,6 +70,7 @@
         <td><%= daten.hinzugefuegt %></td>
         <td><%= daten.preis %></td>
         <td><%= daten.dateipfad %></td>
+        <td><%= daten.seiten %></td>
         <td><%= link_to 'Show', daten %></td>
         <td><%= link_to 'Edit', edit_daten_path(daten) %></td>
         <td><%= link_to 'Destroy', daten, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -49,3 +81,7 @@
 
 <br>
 <button type="button" class="btn btn-success"><%= link_to 'Neuer Eintrag', new_daten_path %></button>
+
+</div>
+</div>
+</div>

@@ -5,31 +5,63 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+    @studenten_statuss = StudentenStatus.all
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+    if true
+        @studenten_statuss = StudentenStatus.all
+        @kunde = logged_kunde
+        @ordersGedrukt = Order.where(kunde: logged_kunde, status: "4")
+        @orders = Order.where(kunde: logged_kunde)  
+        @datensAll = Daten.all 
+        @lager = Lager.all   
+        @invetarTyp = InvetarTyp.all
+        @antragStatuses = AntragStatus.all
+        @antragTyps =  AntragTyp.all
+
+        @antrag = Antrag.where(kunden: logged_kunde.id)
+        @invetar = Invetar.where(kunden: logged_kunde.id)
+
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+    
   end
 
   # GET /students/new
   def new
-    @student = Student.new
-    @studiengangs = Studiengang.all
-    @studenten_statuss = StudentenStatus.all
+    if true
+        @bib = params[:bib]
+        @student = Student.new(bibnummer: @bib)
+        @studiengangs = Studiengang.all
+        @studenten_statuss = StudentenStatus.all 
+        
+             
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end    
   end
 
   # GET /students/1/edit
   def edit
-    @studiengangs = Studiengang.all
-    @studenten_statuss = StudentenStatus.all
+    if current_rule.softwarerechte
+        @studiengangs = Studiengang.all
+        @studenten_statuss = StudentenStatus.all      
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+    
   end
 
   # POST /students
   # POST /students.json
   def create
     @student = Student.new(student_params)
-
+    @student.kundenstatus = 1
+    @student.percentage = 1
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
@@ -58,11 +90,17 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_rule.softwarerechte
+        @student.destroy
+        respond_to do |format|
+        format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
+        format.json { head :no_content } 
+        end     
+    else
+        redirect_to root_path alert: "Keine Recht"
     end
+    
+    
   end
 
   private

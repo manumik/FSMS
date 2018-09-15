@@ -1,0 +1,2 @@
+module AntragStatusesHelper
+end

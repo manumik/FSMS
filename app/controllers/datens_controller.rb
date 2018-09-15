@@ -1,38 +1,69 @@
 class DatensController < ApplicationController
   before_action :set_daten, only: [:show, :edit, :update, :destroy]
 
+  
+
   # GET /datens
   # GET /datens.json
   def index
     @datens = Daten.all
+    @Studiengang = Studiengang.all
+    @Modul = Modul.all
+    @prof = Professor.all
+    @kaigorie = DateienKategorien.all
   end
 
   # GET /datens/1
   # GET /datens/1.json
   def show
+    if current_rule.datein_Show
+        
+        
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # GET /datens/new
   def new
-    @daten = Daten.new
-    @dateien_kategoriens = DateienKategorien.all
-    @studiengangs = Studiengang.all
-    @moduls = Modul.all
-    @professors = Professor.all
+    if current_rule.datein_New
+        @daten = Daten.new
+        @dateien_kategoriens = DateienKategorien.all
+        @studiengangs = Studiengang.all
+        @moduls = Modul.all
+        @professors = Professor.all        
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+    
   end
 
   # GET /datens/1/edit
   def edit
-    @dateien_kategoriens = DateienKategorien.all
-    @studiengangs = Studiengang.all
-    @moduls = Modul.all
-    @professors = Professor.all
+    if current_rule.datein_edit
+        @dateien_kategoriens = DateienKategorien.all
+        @studiengangs = Studiengang.all
+        @moduls = Modul.all
+     @professors = Professor.all      
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+    
   end
 
   # POST /datens
   # POST /datens.json
   def create
     @daten = Daten.new(daten_params)
+    reader = PDF::Reader.new(@daten.dateipfad.path)
+    @daten.seiten = reader.page_count()
+    if @daten.kategorie == 1
+        @daten.preis = @daten.seiten * Setting.find_by(name: "SeitenPreisSkript").value.to_f / 100.0
+    else
+        @daten.preis = @daten.seiten * Setting.find_by(name: "SeitenPreisDoc").value.to_f / 100.0
+    end
+        
 
     respond_to do |format|
       if @daten.save
@@ -62,11 +93,16 @@ class DatensController < ApplicationController
   # DELETE /datens/1
   # DELETE /datens/1.json
   def destroy
-    @daten.destroy
-    respond_to do |format|
-      format.html { redirect_to datens_url, notice: 'Daten was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_rule.datein_delete
+        @daten.destroy
+        respond_to do |format|
+          format.html { redirect_to datens_url, notice: 'Daten was successfully destroyed.' }
+          format.json { head :no_content }
+        end   
+    else
+        redirect_to root_path alert: "Keine Recht"
     end
+   
   end
 
 

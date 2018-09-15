@@ -1,0 +1,54 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<h1>Antrags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Typ</th>
+      <th>Kunden</th>
+      <th>Status</th>
+      <th>Beschreibung</th>
+      <th>Datei</th>
+      <th>Bezug</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @antrags.each do |antrag| %>
+      <tr>
+        <td><%= antrag.name %></td>
+        <td><%= @typ.find(antrag.typ).name %></td>
+        <td>
+        <% if antrag.kunden %>
+            <%= link_to student_path(antrag.kunden) do%>
+            <%= @kunden.find(antrag.kunden).bibnummer %>
+            <% end %>
+            <% else%>
+            Kein Kunde
+        <% end %>
+        </td>
+        <td><%= @status.find(antrag.status).name %></td>
+        <td><%= antrag.beschreibung %></td>
+        <td><a href="<%= antrag.datei %>"><i class="fas fa-file-download"><%= antrag.datei %></i></a></td>
+        <td><%= antrag.bezug %></td>
+        <td><%= link_to 'Show', antrag %></td>
+        <td><%= link_to 'Edit', edit_antrag_path(antrag) %></td>
+        <td><%= link_to 'Destroy', antrag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Antrag', new_antrag_path %>
+
+</div>
+</div>
+</div>

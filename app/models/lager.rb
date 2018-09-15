@@ -1,0 +1,2 @@
+class Lager < ApplicationRecord
+end

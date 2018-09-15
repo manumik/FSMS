@@ -1,0 +1,153 @@
+<p id="notice">
+  <%= notice %>
+</p>
+<div>
+
+  <div style="float:left;width:25%;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+
+      <div class="card-header">Kunden</div>
+      <div class="card-body text-dark">
+
+        <p class="card-text">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Bibnummer</label>
+            <div class="input-group mb-3">
+              <h3>
+                <%= @kunde.bibnummer %>
+              </h3>
+            </div>
+          </div>
+          <div class="card" style="">
+            <div class="card-header">
+              INFO
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Status:
+                <%= if @kunde.kundenstatus
+                    studentenStatuse.find(@kunde.kundenstatus).status
+                  end %>
+              </li>
+              <li class="list-group-item">
+                <%= @kunde.name %>,
+                  <%= @kunde.surname %>
+              </li>
+              <li class="list-group-item">
+                <%= @kunde.email %>
+              </li>
+              <li class="list-group-item">Studiengang:
+                <%= if @kunde.studiengang
+                   studiengang.find(@kunde.studiengang).name
+                  end %>
+              </li>
+              <li class="list-group-item"><strong>Ersteinschreibung:</strong> <%= @student.ersteinschreibung %>
+              </li>
+              <% if current_member %>
+                <li class="list-group-item"><strong>Percentage:</strong> <%= @student.percentage %>
+                </li>
+                <% end%>
+            </ul>
+            <%= link_to edit_student_path(@student) do %>
+              <button class="btn btn-primary" type="submit">Einstellung</button>
+              <% end %>
+                <%= link_to kasse_kasse_path(bib: @student.bibnummer), method: :get do%>
+                  <button class="btn btn-primary" type="submit">Zur Kasse</button>
+                  <% end%>
+
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="float:right;width:75%;">
+  <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+
+
+    <div class="card-header">
+      INFO
+    </div>
+    <div class="card-body text-dark">
+      <div class="form-group">
+        <div class="card" style="">
+          <div class="card-header">
+            Druck Aufträge
+          </div>
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Datei</th>
+                <th cope="col">Status</th>
+                <th cope="col">Letzte änderung</th>
+                <% if current_member %>
+                  <th cope="col">Lagerort</th>
+                  <% end %>
+                    <th cope="col"></th>
+                    <th cope="col" colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% @orders.each do |order| %>
+                <% if order.status < 5 %>
+                  <tr>
+                    <td>
+                      <%= if @datensAll.exists?(order.datei)
+                    @datensAll.find(order.datei).name
+                  end %>
+                    </td>
+                    <td>
+                      <%=orderStatuse.find(order.status).name %>
+                    </td>
+                    <td>
+                      <%= order.updated_at%>
+                    </td>
+
+                    <% if current_member %>
+                      <td>
+                        <%= if  @lager.exists?(order.lager)
+                     @lager.find(order.lager).name
+                  end %>
+                      </td>
+                      <% end %>
+                        <td>
+                          <% if current_member %>
+                            <% if order.status == 4 %>
+                              <%= link_to ausgegeben_kasse_path(order, bib: @kunde.id), method: :patch, data: { confirm: 'Are you sure?' } do %>
+                                <i class="fas fa-check" style="font-size:150%;"></i><% end %>
+                                  <% end %>
+                                    <% end %>
+                        </td>
+                  </tr>
+                  <% end %>
+                    <% end %>
+                      <% @orders.each do |order| %>
+                        <% if order.status >= 5 %>
+                          <tr>
+                            <td>
+                              <%= if @datensAll.exists?(order.datei)
+                    @datensAll.find(order.datei).name
+                  end %>
+                            </td>
+                            <td>
+                              <%=orderStatuse.find(order.status).name %>
+                            </td>
+                            <td>
+                              <%= order.updated_at%>
+                            </td>
+
+
+                            </td>
+                          </tr>
+                          <% end %>
+                            <% end %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

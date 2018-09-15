@@ -1,0 +1,2 @@
+class AntragStatus < ApplicationRecord
+end

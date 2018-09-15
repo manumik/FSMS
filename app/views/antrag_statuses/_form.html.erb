@@ -1,0 +1,22 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<%= simple_form_for(@antrag_status) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :beschreibung %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>

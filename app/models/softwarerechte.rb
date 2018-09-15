@@ -1,0 +1,2 @@
+class Softwarerechte < ApplicationRecord
+end

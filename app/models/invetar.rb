@@ -1,0 +1,2 @@
+class Invetar < ApplicationRecord
+end

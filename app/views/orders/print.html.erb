@@ -1,0 +1,126 @@
+<div style="width:99%;float:left ">
+
+<div class="card border-dark mb-3" style="max-width: 20%;margin: 5px; float:left;">
+    <div class="card-header">Quick</div>
+    <div class="card-body text-dark">
+      <%= link_to datens_path do %>
+        <button class="btn btn-primary" type="submit">Dateien Verwalten</button>
+        <% end%>
+        <br><br>
+        <div class="card border-dark mb-3" style="">
+          <div class="card-header">Massenbestellung / Quik Order</div>
+            <div class="card-body text-dark">
+               <div class="form-group">
+               <%= form_for(@qOrer, method: :patch, url: qOrder_order_path) do |form| %>
+               <%= form.label :kunde %>
+               <%= form.number_field :kunde, id: :order_kunde %>
+               <%= form.label :datei %>
+               <%= form.collection_select :datei , @datens, :id,:name, :prompt => "Bitte Datei auswählen" %>
+               <%= form.submit %>
+               <% end %>            
+                </div>          
+            </div>
+        </div>
+        <br>
+        <div class="card border-dark mb-3" style="">
+          <div class="card-header">Druck Ohne Datei</div>
+            <div class="card-body text-dark">
+               <div class="form-group">
+               <% if @preis > 0 %>
+               <div class="alert alert-danger" role="alert">
+                <%= @preis%>€ Kassieren
+                </div>
+                <% end %>
+               <%= form_with  url: extPrint_order_path do |form| %>
+               Anzahl der Seiten
+               <%= form.number_field(:seiten,  id: :seiten) %>
+               Intern?
+               <%= form.check_box(:int, id: :int) %>
+               <%= form.submit("Druken") %>
+               <% end %>                          
+                </div>          
+            </div>
+        </div>                       
+     </div>
+   </div> 
+
+  <div class="card border-dark mb-3" >
+    <div class="card-header">Aufgaben</div>
+    <div class="card-body text-dark">
+      <div class="card border-dark mb-3">
+        <div class="card-header">Druken</div>
+        <div class="card-body text-dark">
+          <p class="card-text">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Anzahl</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Downloden</th>
+                  <th scope="col">Printd</th>
+                  <th cope="col" colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @datens.each do |daten| %>
+                  <tr>
+                    <% if @order.where(datei: daten).count > 0 %>
+                      <td><%= @order.where(datei: daten).count %></td>
+                      <td><%= daten.name %></td>
+                      <td><a href="<%= daten.dateipfad %>"><i class="fas fa-file-download">download</i></a></td>
+                      <% if current_rule.drucken  %>
+                        <td><%= link_to doPrint_order_path(daten), method: :patch, data: { confirm: 'Sicher das du drucken wilst?' } do %>
+                            <i class="fas fa-print" style="font-size:150%;"></i><% end %>
+                        </td>
+                        <% end %>
+                        <% end %>
+                  </tr>
+                  <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="card border-dark mb-3">
+        <div class="card-header">Einsortiren</div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Anzahl</th>
+              <th scope="col">Name</th>
+              <th scope="col">Lagerort</th>
+              <th scope="col">Printd</th>
+              <th cope="col" colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @lager.each do |lg| %>
+              <tr>
+                <% if @orderSort.where(lager: lg).count > 0 %>
+                  <td>
+                    <%= @orderSort.where(lager: lg).count %>
+                  </td>
+                  <td>
+                    <%= if lg.inhalt
+                    @datens.find(lg.inhalt).name
+                  end %>
+                  </td>
+                  <td>
+                    <%= lg.name %>
+                  </td>
+                  <% if current_rule.drucken  %>
+                    <td>
+                      <%= link_to doSort_order_path(lg), method: :patch, data: { confirm: 'Hast du es richtig einsortirt?' } do %>
+                        <i class="fas fa-clipboard-check"></i><% end %>
+                    </td>
+                    <% end %>
+                      <% end %>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  
+</div>

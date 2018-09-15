@@ -1,0 +1,36 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<p>
+  <strong>Orderid:</strong>
+  <%= @order.orderid %>
+</p>
+
+<p>
+  <strong>Kunde:</strong>
+  <%= @order.kunde %>
+</p>
+
+<p>
+  <strong>Datei:</strong>
+  <%= @order.datei %>
+</p>
+
+<p>
+  <strong>Lagerort:</strong>
+  <%= @order.lager %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+
+</div>
+</div>
+</div>

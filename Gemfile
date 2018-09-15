@@ -22,9 +22,28 @@ gem 'uglifier', '>= 1.3.0'
 #Use Jquery
 gem 'jquery-rails', '~> 4.3.1'
 #Use Bootstrap
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap', '~> 4.1.3'
 gem 'autoprefixer-rails'
 
+#Use Simple Form
+gem 'simple_form'
+
+#Use Carrierwave
+gem 'carrierwave', '~> 1.0'
+
+#Use Parwn
+gem 'prawn'
+gem 'pdf-reader'
+
+#Use barby
+gem 'barby'
+
+# Use Datertabel
+gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+
+gem 'haml-rails'            # or try using gem 'hamlit-rails'
+gem 'effective_datatables'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -35,7 +54,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -3,43 +3,151 @@
   <head>
     <title>FS06MS</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all',
-                                              'data-turbolinks-track': 'reload' %>
-    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <%= stylesheet_link_tag 'application', media: 'all','data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
       </script>
     <![endif]-->
+    <%# Font Asom %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
   </head>
-  <body>
-    <div style="height:40px;width: 100%; background-color:#00618e;font-size: 32px;">
-      <center>FS06</center>
-    </div>
-    <nav class="nav" style="height: 40px;background-color:#00618e;">
-      <a class="nav-link" href="/kasse/kasse" style="color: #ffffff;">Kasse</a>
-      <a class="nav-link" href="#" style="color: #ffffff;">Formulare</a>
-      <a class="nav-link" href="#" style="color: #ffffff;">Ausleihen</a>
-      <a class="nav-link" href="#" style="color: #ffffff;">Drucken</a>
-      <a class="nav-link  dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff;">Daten</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/datens">Daten</a>
-        <a class="dropdown-item" href="/dateien_kategoriens">Kategorien</a>
-        <a class="dropdown-item" href="/moduls">Module</a>
-        <a class="dropdown-item" href="/studiengangs">Studiengänge</a>
-        <a class="dropdown-item" href="/professors">Proffesoren</a>
-        <a class="dropdown-item" href="/students">Studenten</a>
+  <body style="background-color:#1e2460;">
+  <div class="container-fluid" style="background-color:#969992">
+    
+    <div class="row" style= "background-color:#969992">
+      <div  class="col">
+      <p class="text-white">
+        <br>
+        <div class="form-group">
+            <%= form_tag("/kasse/kasse", method: "get") do %>
+            <%= label_tag(:bib, "Nächster Kunde") %>
+            <%= text_field_tag(:bib,) %>
+            <%= submit_tag("kasse") %>
+            <% end %>
+            </p>
+        </div>
       </div>
-    </nav>
-    <div id="login" style="height:40px;">
-      Hier ist der Login!
+
+        <div  class="col-3" id="login" style="float: left;color:#000000;">
+                <p class="text-white">
+                <br>
+                <% if session[:bib]%>
+                
+                    Hallo <%= logged_kunde.surname %>, <%= logged_kunde.name %> Bib: <%= session[:bib] %>
+                    <%= link_to  logoutKunde_kasse_path(logged_kunde) do %>
+                        <i class="fas fa-sign-out-alt" style="font-size:150%;"> </i>
+                        <% end %>
+                <% else %>
+                    Bitte einloggen
+                <% end %>
+
+                </p>
+        </div>
+        <%# <div  class="col-9">
+        </div> %>
+        <div class="col" id="login" style="float: right;;font-size: 32px; color:#000000;">
+
+            <span class="align-middle"><p class="text-white text-right ">
+                    <% if current_member %>
+                    <br>
+                        Eingelogt als <%= current_member.spitzname %>
+                        <%= link_to  session_path("current"), method: "delete" do %>
+                        <i class="fas fa-sign-out-alt" style="font-size:150%;"> </i>
+                        <% end %>
+                    <% else %>
+                        <%= link_to  new_session_path  do %>
+                        <p class="text-white">FS Log In</p>
+                        <%end%>
+                    <% end %>
+                    </p></span>
+
+        </div>
+
+
     </div>
-    <div id="content">
+    <div class="row" >
+        <nav class="nav" style="height: 40px;background-color:#969992;">
+        <% if logged_kunde %>
+        <a class="nav-link" href="/kasse/kasse" style="color: #ffffff;">Kasse</a>        
+        <a class="nav-link" href="/students/<%= logged_kunde.id %>" style="color: #ffffff;">Status</a>        
+        <% end %>
+        <% if current_member %>
+        <a class="nav-link" href="/antrags/0/hub" style="color: #ffffff;">Formulare</a>
+        <a class="nav-link" href="/invetars/0/hub" style="color: #ffffff;">Ausleihen</a>
+        <a class="nav-link" href="/lagers" style="color: #ffffff;">Lager</a>
+        <a class="nav-link" href="/orders/0/print" style="color: #ffffff;">Drucken</a>
+        <% if current_rule.id == 1 %>
+        <div>
+        <a class="nav-link  dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff;">Admin</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/members">Members</a>
+            <a class="dropdown-item" href="/settings">Settings</a>  
+            <% if current_rule.member_New %>
+            <a class="nav-link" href="/members/new" style="">Registriren</a>
+            <% end %>
+            <a class="dropdown-item" href="/softwarerechtes">Softwarerechte</a>
+        </div>
+        </div>
+        <div>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff;">Datenbank</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/datens">Daten</a>
+                <a class="dropdown-item" href="/dateien_kategoriens">Kategorien</a>
+                <a class="dropdown-item" href="/moduls">Module</a>
+                <a class="dropdown-item" href="/invetars/">Invetar</a>
+                <a class="dropdown-item" href="/invetar_typs/">Invetar_Typs</a>
+                <a class="dropdown-item" href="/studiengangs">Studiengänge</a>
+                <a class="dropdown-item" href="/professors">Proffesoren</a>
+                <a class="dropdown-item" href="/students">Studenten</a>
+                <a class="dropdown-item" href="/studenten_statuses">Studenten Status</a>
+                <a class="dropdown-item" href="/orders">Order</a>
+                <a class="dropdown-item" href="/order_statuses">Order Statuses</a>  
+                <a class="dropdown-item" href="/antrags">Formulare</a>
+                <a class="dropdown-item" href="/antrag_statuses">Formulare_Status</a>
+                <a class="dropdown-item" href="/antrag_typs">Formulare_T</a>
+                <a class="dropdown-item" href="/lagers">Lager</a>
+                <a class="dropdown-item" href="/texts">Uebersetzung</a>                              
+            </div>
+        </div>
+        <% end %>
+        <a class="nav-link" href="http://wiki.fachschaft06.de" style="color: #ffffff;">Wiki</a>
+        <% end %>       
+        <a class="nav-link" href="http://www.fachschaft06.de/" style="color: #ffffff;">Hompage</a>
+        <a class="nav-link" href="http://www.nyan.cat/" style="color: #ffffff;">Fun</a>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="container-fluid" id="content">
+      <p id="notice"><%= notice %></p>
       <%= yield %>
     </div>
+    <br>
+    <br>
+     <p class="text-white">
+    Created by Magnum und Manuel
+    </p>
+    <footer class="footer" style="sticky: absolute; bottom: 0; width:100%;">    
+        <div class="row" style="background-color:#969992;" >
+            <div  class="col">
+            <%= image_tag "/Bilder/logo.png", size: "128x109" %>
+            </div>
+            <div  class="col">
+            <h1 style="color:#000000;">FS06 Management system </h1>
+            </div>
+            <div  class="col text-right">
+            <%= image_tag "/Bilder/logo.png", size: "128x109" %>
+            </div>
+        </div>       
+    </footer>
   </body>
 </html>

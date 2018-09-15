@@ -1,0 +1,34 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<h1>Invetar Typs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invetar_typs.each do |invetar_typ| %>
+      <tr>
+        <td><%= invetar_typ.name %></td>
+        <td><%= link_to 'Show', invetar_typ %></td>
+        <td><%= link_to 'Edit', edit_invetar_typ_path(invetar_typ) %></td>
+        <td><%= link_to 'Destroy', invetar_typ, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invetar Typ', new_invetar_typ_path %>
+
+</div>
+</div>
+</div>

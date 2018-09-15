@@ -1,0 +1,73 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="width: 25%;margin: 5px;float:left;">
+      <div class="card-header">QL</div>
+      <div class="card-body text-dark">
+
+        <% if current_rule.antrag_Show %>
+        <%= link_to antrags_path do %>
+          <button class="btn btn-primary" type="submit">zu Formular Liste</button>    
+          <% end %>
+        <% end %>
+        <div class="card border-dark mb-3" style="margin: 5px;">
+            <div class="card-header">Dreamspak QL</div>
+            <div class="card-body text-dark">
+            <% if @massage  %>
+               <div class="alert alert-danger" role="alert">
+                <%= @massage%>€ Kassieren
+                </div>
+                <% end %>
+            <div class="form-group">
+            <%= form_with url: dreamSpark_antrag_path, method: :get  do |f| %>
+            <%= f.label(:text, "QR Code") %>
+            <%= f.text_field(:text,) %>
+            <%= f.submit("Dremaspark Antrag") %>
+            <% end %>
+        </div>
+
+            </div>
+         </div>          
+      </div>
+
+
+
+</div>
+<div class="card border-dark mb-3" style="margin: 5px;">
+      <div class="card-header">Formular</div>
+      <div class="card-body text-dark">
+
+        <% if !@typ.blank? %>
+          <% for item in @typ %>
+          <div class="card border-dark mb-3" style="margin: 5px;">
+            <div class="card-header"><%= item.name %></div>
+                <div class="card-body text-dark">
+            
+              <table id="datatable"  class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Anzahl</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @status.each do |stat| %>
+              <% if @antrags.where(status: stat, typ: item).count > 0 %>
+                <tr>
+                  <td><%= stat.name %></td> 
+                  <td><%= @antrags.where(status: stat, typ: item).count %></td>
+                  <td></td>                
+                </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+            
+                </div>
+            </div>
+            <% end %>
+        <% end %>
+        
+
+      
+      </div>
+</div>

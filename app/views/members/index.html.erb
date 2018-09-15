@@ -1,0 +1,53 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+
+<h1>Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bib</th>
+      <th>Spitzname</th>
+      <th>Name</th>
+      <th>Surename</th>
+      <th>Email</th>
+      <th>Tel</th>
+      <th>Studengang</th>
+      <th>Softwarerechte</th>
+      <th>Chipid</th>
+      <th>Getraenke</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.bib %></td>
+        <td><%= member.spitzname %></td>
+        <td><%= member.name %></td>
+        <td><%= member.surename %></td>
+        <td><%= member.email %></td>
+        <td><%= member.tel %></td>
+        <td><%= member.studengang %></td>
+        <td><%= member.softwarerechte %></td>
+        <td><%= member.chipid %></td>
+        <td><%= member.getraenke %></td>
+        <td><%= link_to 'Show', member %></td>
+        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>
+
+</div>
+</div>
+</div>

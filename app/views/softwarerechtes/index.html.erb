@@ -1,0 +1,112 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<h1>Softwarerechtes</h1>
+
+<table>
+  <thead>
+  <tr>
+    <% @softwarerechtes.each do |softwarerechte| %>
+      
+        <th><%= softwarerechte.name %></th>
+        <th><%= softwarerechte.beschreibung %></th>
+        <th><%= softwarerechte.kasse_neuerKunde %></th>
+        <th><%= softwarerechte.kasse_bezahlen %></th>
+        <th><%= softwarerechte.kasse_ausgeben %></th>
+        <th><%= softwarerechte.dreamspark_aufnehmen %></th>
+        <th><%= softwarerechte.dreamspark_editiren %></th>
+        <th><%= softwarerechte.drucken %></th>
+        <th><%= softwarerechte.ausleihen_algemein %></th>
+        <th><%= softwarerechte.ausleihen_laptop %></th>
+        <th><%= softwarerechte.antrag_New %></th>
+        <th><%= softwarerechte.antrag_Show %></th>
+        <th><%= softwarerechte.antrag_delete %></th>
+        <th><%= softwarerechte.antrag_edit %></th>
+        <th><%= softwarerechte.antragtyp %></th>
+        <th><%= softwarerechte.antragStatus %></th>
+        <th><%= softwarerechte.datein_New %></th>
+        <th><%= softwarerechte.datein_Show %></th>
+        <th><%= softwarerechte.datein_delete %></th>
+        <th><%= softwarerechte.datein_edit %></th>
+        <th><%= softwarerechte.dateienKatigorie %></th>
+        <th><%= softwarerechte.modul %></th>
+        <th><%= softwarerechte.professor %></th>
+        <th><%= softwarerechte.studiengang %></th>
+        <th><%= softwarerechte.invetar_New %></th>
+        <th><%= softwarerechte.invetar_Show %></th>
+        <th><%= softwarerechte.invetar_delete %></th>
+        <th><%= softwarerechte.invetar_edit %></th>
+        <th><%= softwarerechte.member_New %></th>
+        <th><%= softwarerechte.member_Show %></th>
+        <th><%= softwarerechte.member_delete %></th>
+        <th><%= softwarerechte.member_edit %></th>
+        <th><%= softwarerechte.order_New %></th>
+        <th><%= softwarerechte.order_Show %></th>
+        <th><%= softwarerechte.order_delete %></th>
+        <th><%= softwarerechte.order_edit %></th>
+        <th><%= softwarerechte.orderStatus %></th>
+        <th><%= softwarerechte.softwarerechte %></th>
+        <th><%= link_to 'Show', softwarerechte %></th>
+        <th><%= link_to 'Edit', edit_softwarerechte_path(softwarerechte) %></th>
+        <th><%= link_to 'Destroy', softwarerechte, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+    <% end %>
+    </tr>
+
+    
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td>Beschreibung</td>
+      <td>Kasse neuerkunde</td>
+      <td>Kasse bezahlen</td>
+      <td>Kasse ausgeben</td>
+      <td>Dreamspark aufnehmen</td>
+      <td>Dreamspark editiren</td>
+      <td>Drucken</td>
+      <td>Ausleihen algemein</td>
+      <td>Ausleihen laptop</td>
+      <td>Antrag new</td>
+      <td>Antrag show</td>
+      <td>Antrag delete</td>
+      <td>Antrag edit</td>
+      <td>Antragtyp</td>
+      <td>Antragstatus</td>
+      <td>Datein new</td>
+      <td>Datein show</td>
+      <td>Datein delete</td>
+      <td>Datein edit</td>
+      <td>Dateienkatigorie</td>
+      <td>Modul</td>
+      <td>Professor</td>
+      <td>Studiengang</td>
+      <td>Invetar new</td>
+      <td>Invetar show</td>
+      <td>Invetar delete</td>
+      <td>Invetar edit</td>
+      <td>Member new</td>
+      <td>Member show</td>
+      <td>Member delete</td>
+      <td>Member edit</td>
+      <td>Order new</td>
+      <td>Order show</td>
+      <td>Order delete</td>
+      <td>Order edit</td>
+      <td>Orderstatus</td>
+      <td>Softwarerechte</td>
+      <td colspan="3"></th>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Softwarerechte', new_softwarerechte_path %>
+
+</div>
+</div>
+</div>

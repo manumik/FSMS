@@ -10,15 +10,30 @@ class DateienKategoriensController < ApplicationController
   # GET /dateien_kategoriens/1
   # GET /dateien_kategoriens/1.json
   def show
+    if current_rule.dateienKatigorie
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # GET /dateien_kategoriens/new
   def new
-    @dateien_kategorien = DateienKategorien.new
+    if current_rule.dateienKatigorie
+        @dateien_kategorien = DateienKategorien.new  
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+   
   end
 
   # GET /dateien_kategoriens/1/edit
   def edit
+    if current_rule.dateienKatigorie
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # POST /dateien_kategoriens
@@ -54,11 +69,16 @@ class DateienKategoriensController < ApplicationController
   # DELETE /dateien_kategoriens/1
   # DELETE /dateien_kategoriens/1.json
   def destroy
-    @dateien_kategorien.destroy
-    respond_to do |format|
-      format.html { redirect_to dateien_kategoriens_url, notice: 'Dateien kategorien was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_rule.dateienKatigorie
+        @dateien_kategorien.destroy
+        respond_to do |format|
+          format.html { redirect_to dateien_kategoriens_url, notice: 'Dateien kategorien was successfully destroyed.' }
+          format.json { head :no_content }
+        end   
+    else
+        redirect_to root_path alert: "Keine Recht"
     end
+    
   end
 
   private

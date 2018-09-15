@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lager.name %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @lager.beschreibung %>
+</p>
+
+<p>
+  <strong>Dateiorkunde:</strong>
+  <%= @lager.dateiORkunde %>
+</p>
+
+<p>
+  <strong>Inhalt:</strong>
+  <%= @lager.inhalt %>
+</p>
+
+<p>
+  <strong>Docanzahl:</strong>
+  <%= @lager.docAnzahl %>
+</p>
+
+<%= link_to 'Edit', edit_lager_path(@lager) %> |
+<%= link_to 'Back', lagers_path %>

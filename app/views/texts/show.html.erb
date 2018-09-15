@@ -1,0 +1,38 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+
+<p>
+  <strong>Tag:</strong>
+  <%= @text.tag %>
+</p>
+
+<p>
+  <strong>De:</strong>
+  <%= @text.de %>
+</p>
+
+<p>
+  <strong>En:</strong>
+  <%= @text.en %>
+</p>
+
+<p>
+  <strong>Fr:</strong>
+  <%= @text.fr %>
+</p>
+
+<p>
+  <strong>Sp:</strong>
+  <%= @text.sp %>
+</p>
+
+<%= link_to 'Edit', edit_text_path(@text) %> |
+<%= link_to 'Back', texts_path %>
+
+</div>
+</div>
+</div>
+

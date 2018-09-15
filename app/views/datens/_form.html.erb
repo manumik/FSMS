@@ -1,3 +1,8 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
 <%= form_with(model: daten, local: true) do |form| %>
   <% if daten.errors.any? %>
     <div id="error_explanation">
@@ -27,12 +32,12 @@
 
   <div class="field">
     <%= form.label :studiengang %>
-    <%= form.collection_select :kategorie, @studiengangs, :id, :name, :prompt => "Bitte Studiengang auswählen" %>
+    <%= form.collection_select :studiengang, @studiengangs, :id, :name, :prompt => "Bitte Studiengang auswählen" %>
   </div>
 
   <div class="field">
     <%= form.label :modul %>
-    <%= form.collection_select :kategorie, @moduls, :id, :name, :prompt => "Bitte Modul auswählen" %>
+    <%= form.collection_select :modul, @moduls, :id, :name, :prompt => "Bitte Modul auswählen" %>
   </div>
 
   <div class="field">
@@ -42,7 +47,7 @@
 
   <div class="field">
     <%= form.label :professor %>
-    <%= form.collection_select :kategorie, @professors, :id, :surname, :prompt => "Bitte Professor auswählen" %>
+    <%= form.collection_select :professor, @professors, :id,:name, :prompt => "Bitte Professor auswählen" %>
   </div>
 
   <div class="field">
@@ -77,10 +82,20 @@
 
   <div class="field">
     <%= form.label :dateipfad %>
-    <%= form.text_field :dateipfad, id: :daten_dateipfad %>
+    <%= form.file_field :dateipfad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seiten %>
+    <%= form.number_field :seiten, id: :daten_seiten %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+</div>
+</div>
+</div>
+

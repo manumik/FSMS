@@ -1,0 +1,2 @@
+module AntragsHelper
+end

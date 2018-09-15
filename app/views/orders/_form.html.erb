@@ -1,0 +1,51 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :orderid %>
+    <%= form.number_field :orderid, id: :order_orderid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kunde %>
+    <%= form.number_field :kunde, id: :order_kunde %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datei %>
+    <%= form.number_field :datei, id: :order_datei %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :order_status %>
+  </div>
+  <div class="field">
+    <%= form.label :seiten %>
+    <%= form.number_field :seiten, id: :seiten %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+</div>
+</div>
+</div>

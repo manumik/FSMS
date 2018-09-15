@@ -1,0 +1,63 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<h1>Orders</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Orderid</th>
+      <th scope="col">Kunde</th>
+      <th scope="col">Datei</th>
+      <th scope="col">Status</th>
+      <th scope="col">created</th>
+      <th scope="col">updated</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= if  !order.kunde.blank?
+                    if @kunden.exists?(order.kunde)
+                      @kunden.find(order.kunde).bibnummer 
+                    else
+                      order.kunde                    
+                    end
+                end %></td>
+        <td><%= if !order.datei.blank?
+                  if  @Datei.exists?(order.datei)
+                     @Datei.find(order.datei).name
+                  else
+                     order.datei
+                  end
+                  end %></td>
+        <td><%= if !order.status.blank?
+                    if @orderStatus.exists?(order.status)
+                      @orderStatus.find(order.status).name
+                    end
+                    
+                  end %></td>
+        <td><%= order.lager %></td>
+        <td><%= order.seiten %></td>
+        <td><%= order.created_at %></td>
+        <td><%= order.updated_at %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>
+
+</div>
+</div>
+</div>

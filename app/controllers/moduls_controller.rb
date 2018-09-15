@@ -10,15 +10,30 @@ class ModulsController < ApplicationController
   # GET /moduls/1
   # GET /moduls/1.json
   def show
+    if current_rule.modul
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # GET /moduls/new
   def new
-    @modul = Modul.new
+    if current_rule.modul
+        @modul = Modul.new      
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+    
   end
 
   # GET /moduls/1/edit
   def edit
+    if current_rule.modul
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # POST /moduls
@@ -54,11 +69,16 @@ class ModulsController < ApplicationController
   # DELETE /moduls/1
   # DELETE /moduls/1.json
   def destroy
-    @modul.destroy
-    respond_to do |format|
-      format.html { redirect_to moduls_url, notice: 'Modul was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_rule.modul
+        @modul.destroy
+        respond_to do |format|
+        format.html { redirect_to moduls_url, notice: 'Modul was successfully destroyed.' }
+        format.json { head :no_content }
+    end      
+    else
+        redirect_to root_path alert: "Keine Recht"
     end
+    
   end
 
   private

@@ -1,0 +1,47 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header"><%= @invetar_typs.find(@invetar.typ).name %> #<%= @invetar.invetarnummer %></div>
+      <div class="card-body text-dark">
+
+      <div class="row">
+
+      <div class="col-sm"><p><%= @invetar_typs.find(@invetar.typ).icon.html_safe %></p></div>
+      <div  class="col-sm-6">
+<p>
+  <strong>Ausgelihen an:</strong>
+  <% if @invetar.kunden == 0 || @invetar.kunden.blank? %> 
+  Frei
+  <% else %>
+    <%= link_to student_path(@invetar.kunden) do%>
+    <%= @kunde.surname %> <%= @kunde.name %>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @invetar.beschreibung %>
+</p>
+
+<p>
+  <strong>Zurück am:</strong>
+  <%= @invetar.backat %>
+</p>
+<%= link_to pdf_invetar_path(@invetar),format: "pdf", method: :get do %>
+<button class="btn btn-primary" type="submit">Formular PDF</button>
+<% end %> 
+
+<%= link_to edit_antrag_status_path(@invetar.bezug), method: :get do %>
+<button class="btn btn-primary" type="submit">Ausleihen abschlisen</button>
+<% end %> 
+<%= link_to edit_invetar_path(@invetar) do %> 
+<button class="btn btn-primary" type="submit">Editiren</button>
+<% end %>
+</div>
+</div>
+
+<%= link_to 'Back', invetars_path %>
+
+</div>
+</div>
+</div>

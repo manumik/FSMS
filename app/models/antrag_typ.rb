@@ -1,0 +1,2 @@
+class AntragTyp < ApplicationRecord
+end

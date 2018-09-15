@@ -1,0 +1,48 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @antrag.name %>
+</p>
+
+<p>
+  <strong>Typ:</strong>
+  <%= @antrag.typ %>
+</p>
+
+<p>
+  <strong>Kunden:</strong>
+  <%= @antrag.kunden %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @antrag.status %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @antrag.beschreibung %>
+</p>
+
+<p>
+  <strong>Datei:</strong>
+  <%= @antrag.datei %>
+</p>
+
+<p>
+  <strong>Beszug:</strong>
+  <%= @antrag.bezug %>
+</p>
+
+<%= link_to 'Edit', edit_antrag_path(@antrag) %> |
+<%= link_to 'Back', antrags_path %>
+
+</div>
+</div>
+</div>

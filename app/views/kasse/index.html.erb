@@ -1,0 +1,16 @@
+
+<div style="width:80%; ">
+  <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;" >
+    <div class="card-header">Nächster Kunde</div>
+    <div class="card-body text-dark">
+
+      <p class="card-text">
+        <div class="form-group">
+                  <%= form_tag("/kasse/kasse", method: "get") do %>
+                  <%= label_tag(:bib, "Bibnummer") %>
+                  <%= text_field_tag(:bib,) %>
+                  <%= submit_tag("kasse") %>
+                <% end %>
+        </div>
+    </div>
+</div>

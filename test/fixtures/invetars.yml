@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invetarnummer: 1
+  typ: MyString
+  kunden: 1
+  beschreibung: MyString
+  backat: 2018-04-26 00:17:01
+
+two:
+  invetarnummer: 1
+  typ: MyString
+  kunden: 1
+  beschreibung: MyString
+  backat: 2018-04-26 00:17:01

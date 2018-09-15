@@ -1,0 +1,63 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+
+<p>
+  <strong>Bib:</strong>
+  <%= @member.bib %>
+</p>
+
+<p>
+  <strong>Spitzname:</strong>
+  <%= @member.spitzname %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Surename:</strong>
+  <%= @member.surename %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @member.email %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @member.tel %>
+</p>
+
+<p>
+  <strong>Studengang:</strong>
+  <%= @member.studengang %>
+</p>
+
+<p>
+  <strong>Softwarerechte:</strong>
+  <%= @member.softwarerechte %>
+</p>
+
+<p>
+  <strong>Chipid:</strong>
+  <%= @member.chipid %>
+</p>
+
+<p>
+  <strong>Getraenke:</strong>
+  <%= @member.getraenke %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
+
+
+</div>
+</div>
+</div>

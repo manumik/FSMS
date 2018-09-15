@@ -1,0 +1,2 @@
+class InvetarTyp < ApplicationRecord
+end

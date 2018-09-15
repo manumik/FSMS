@@ -10,15 +10,30 @@ class StudiengangsController < ApplicationController
   # GET /studiengangs/1
   # GET /studiengangs/1.json
   def show
+    if current_rule.modul
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # GET /studiengangs/new
   def new
-    @studiengang = Studiengang.new
+    if current_rule.modul
+        @studiengang = Studiengang.new      
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+    
   end
 
   # GET /studiengangs/1/edit
   def edit
+    if current_rule.modul
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # POST /studiengangs
@@ -54,11 +69,16 @@ class StudiengangsController < ApplicationController
   # DELETE /studiengangs/1
   # DELETE /studiengangs/1.json
   def destroy
-    @studiengang.destroy
+    if current_rule.modul
+        @studiengang.destroy
     respond_to do |format|
       format.html { redirect_to studiengangs_url, notice: 'Studiengang was successfully destroyed.' }
       format.json { head :no_content }
+    end      
+    else
+        redirect_to root_path alert: "Keine Recht"
     end
+    
   end
 
   private

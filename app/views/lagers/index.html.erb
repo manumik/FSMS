@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lagers</h1>
+<div>
+<% @lagers.each do |lager| %>
+    
+      <div class="card" style="width: 18rem;width:10%;float:left;">
+        <div class="card-header">
+        
+        <% if lager.dateiORkunde %>
+            <i class="fas fa-file"></i>
+        <% else %>
+            <i class="fas fa-user"></i>
+        <% end %> |
+        <%= lager.name %>
+        </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h5 class="card-title">
+                <%= if @datensAll.exists?(lager.inhalt)
+                    @datensAll.find(lager.inhalt).name
+                  end %>
+                </h5></li>
+                <li class="list-group-item">Anz: <%= lager.docAnzahl %>
+                <br>
+                <%= lager.beschreibung %>
+                </li>
+                <li class="list-group-item">
+                <%= link_to 'Show', lager %>
+                <%= link_to 'Edit', edit_lager_path(lager) %>
+                <%= link_to 'Destroy', lager, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </li>
+                
+            </ul>
+        </div>
+    
+<% end %>
+</div>
+
+<div class="card" style="width: 18rem;width:10%;float:left;">
+        <div class="card-header"> New</div>
+        <br>
+        <%= link_to new_lager_path do %>
+        <p class="text-center"><i class="fas fa-plus fa-7x"></i></p>
+        <% end %>
+        <br>
+</div>

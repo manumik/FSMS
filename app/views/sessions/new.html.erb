@@ -1,0 +1,15 @@
+<h1>Log In</h1>
+<%= form_tag sessions_path do %>
+    <div>
+        <%= label_tag :bib %>
+        <%= number_field_tag :bib, params[:bib] %>
+        Oder
+        <%= label_tag :spitzname %>
+        <%= text_field_tag :spitzname, params[:spitzname] %>
+
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+
+        <%= submit_tag "Log in" %>
+    </div>
+<% end %>

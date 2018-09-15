@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  orderid: 1
+  kunde: 1
+  datei: 1
+  status: 1
+
+two:
+  orderid: 1
+  kunde: 1
+  datei: 1
+  status: 1

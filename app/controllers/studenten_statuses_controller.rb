@@ -10,15 +10,30 @@ class StudentenStatusesController < ApplicationController
   # GET /studenten_statuses/1
   # GET /studenten_statuses/1.json
   def show
+    if current_rule.softwarerechte
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # GET /studenten_statuses/new
   def new
-    @studenten_status = StudentenStatus.new
+    if current_rule.softwarerechte
+        @studenten_status = StudentenStatus.new      
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
+    
   end
 
   # GET /studenten_statuses/1/edit
   def edit
+    if current_rule.softwarerechte
+              
+    else
+        redirect_to root_path alert: "Keine Recht"
+    end
   end
 
   # POST /studenten_statuses
@@ -54,11 +69,16 @@ class StudentenStatusesController < ApplicationController
   # DELETE /studenten_statuses/1
   # DELETE /studenten_statuses/1.json
   def destroy
-    @studenten_status.destroy
+    if current_rule.softwarerechte
+        @studenten_status.destroy
     respond_to do |format|
       format.html { redirect_to studenten_statuses_url, notice: 'Studenten status was successfully destroyed.' }
       format.json { head :no_content }
+    end      
+    else
+        redirect_to root_path alert: "Keine Recht"
     end
+    
   end
 
   private

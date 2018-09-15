@@ -1,0 +1,71 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Verfügbare</div>
+      <div class="card-body text-dark">
+
+        <% if current_rule.invetar_Show %>
+        <%= link_to invetars_path do %>
+          <button class="btn btn-primary" type="submit">zu Invetar Liste</button>
+          <% end %>
+        <% end %>
+
+        <br>
+        <br>
+
+      <table class="table table-striped table-sm">
+  <thead>
+    <tr>      
+      <th>Typ</th>
+      <th>Frei/Gesamt</th>
+      
+      <th>Ausleihen</th>      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invetar_typs.each do |typ| %>
+    <% if ( (@invetars.where(typ: typ, kunden: 0,ausleihbar: true).count)) >0 %>
+      <tr>
+        <td><%= typ.name %></td>
+        <td><%= (@invetars.where(typ: typ, kunden: 0,ausleihbar: true).count) %>/<%=  @invetars.where(typ: typ,ausleihbar: true).count %></td>
+        
+        <td> <% if !logged_kunde.email.empty? %>                 
+                        <%= link_to ausleihen_invetar_path(typ), method: :patch do %>
+                        <button class="btn btn-primary" type="submit">Ausleihen</button>
+                        <% end %>                     
+                <% else %>
+                Student hat keine E-Mail hinterlegt 
+            <% end %>
+         </td>        
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+
+    <table class="table table-striped table-sm">
+  <thead>
+    <tr>      
+      <th>Typ</th>
+      <th>Nummer</th>      
+      <th>Ausgelihen an</th>      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invetar_typs.each do |typ| %>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>        
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+      </div>
+</div>
+</div>

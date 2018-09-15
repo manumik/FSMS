@@ -1,0 +1,3 @@
+
+
+    $('#datens').DataTabel()

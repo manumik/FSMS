@@ -1,0 +1,75 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+
+<%= form_with(model: member, local: true) do |form| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this daten from being saved:</h2>
+
+      <ul>
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :bib %>
+    <%= form.number_field :bib, id: :member_bib %>
+  </div>
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, id: :member_password %>
+    
+  </div>
+  <div class="field">
+    <%= form.label :spitzname %>
+    <%= form.text_field :spitzname, id: :member_spitzname %>
+  </div>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :member_name %>
+  </div>
+  <div class="field">
+    <%= form.label :surename %>
+    <%= form.text_field :surename, id: :member_surename %>
+  </div>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, id: :member_email %>
+  </div>
+  <div class="field">
+    <%= form.label :tel %>
+    <%= form.number_field :tel, id: :member_tel %>
+  </div>
+  <div class="field">
+    <%= form.label :studengang %>
+    <%= form.collection_select :studengang, @Studiengang, :id, :name, :prompt => "Bitte Studiengang auswählen" %>
+  </div>
+  <div class="field">
+    <%= form.label :softwarerechte %>
+    <%= form.collection_select :softwarerechte, @softwarerechte, :id, :name, :prompt => "Bitte Softwarerechte auswählen" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chipid %>
+    <%= form.number_field :chipid, id: :member_chipid %>
+  </div>
+  <div class="field">
+    <%= form.label :getraenke %>
+    <%= form.number_field :getraenke, id: :member_getraenke %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>

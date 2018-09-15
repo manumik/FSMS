@@ -1,0 +1,60 @@
+<div style="margin:0 auto;">
+    <div class="card border-dark mb-3" style="max-width: 100%;margin: 5px;">
+      <div class="card-header">Skripten</div>
+      <div class="card-body text-dark">
+
+
+<%= simple_form_for(@softwarerechte) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :beschreibung %>
+    <%= f.input :kasse_neuerKunde %>
+    <%= f.input :kasse_bezahlen %>
+    <%= f.input :kasse_ausgeben %>
+    <%= f.input :dreamspark_aufnehmen %>
+    <%= f.input :dreamspark_editiren %>
+    <%= f.input :drucken %>
+    <%= f.input :ausleihen_algemein %>
+    <%= f.input :ausleihen_laptop %>
+    <%= f.input :antrag_New %>
+    <%= f.input :antrag_Show %>
+    <%= f.input :antrag_delete %>
+    <%= f.input :antrag_edit %>
+    <%= f.input :antragtyp %>
+    <%= f.input :antragStatus %>
+    <%= f.input :datein_New %>
+    <%= f.input :datein_Show %>
+    <%= f.input :datein_delete %>
+    <%= f.input :datein_edit %>
+    <%= f.input :dateienKatigorie %>
+    <%= f.input :modul %>
+    <%= f.input :professor %>
+    <%= f.input :studiengang %>
+    <%= f.input :invetar_New %>
+    <%= f.input :invetar_Show %>
+    <%= f.input :invetar_delete %>
+    <%= f.input :invetar_edit %>
+    <%= f.input :member_New %>
+    <%= f.input :member_Show %>
+    <%= f.input :member_delete %>
+    <%= f.input :member_edit %>
+    <%= f.input :order_New %>
+    <%= f.input :order_Show %>
+    <%= f.input :order_delete %>
+    <%= f.input :order_edit %>
+    <%= f.input :orderStatus %>
+    <%= f.input :softwarerechte %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+</div>
+</div>
+</div>

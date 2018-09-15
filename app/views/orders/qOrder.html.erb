@@ -1,0 +1,51 @@
+<div style="width:99%;float:left ">
+
+<div class="card border-dark mb-3" style="max-width: 95%;margin: 5px; ">
+    <div class="card-header">Quick</div>
+    <div class="card-body text-dark">
+    <% if (params[:order].present?)%>
+    <%= form_for(@qOrer, method: :patch, url: qOrder_order_path) do |form| %>
+               <i class="fas fa-file"></i>
+               <%= form.collection_select :datei , @datens, :id,:name %> 
+               <%= form.label :kunde %>
+               <%= form.number_field :kunde, id: :order_kunde %>               
+               
+               <%= form.submit %>
+               <% end %>
+      <% end %>
+
+    <div class="card border-dark mb-3">
+        <div class="card-header">Bestellung</div>
+        <div class="card-body text-dark">
+          <p class="card-text">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Bib</th>                
+                  <th scope="col">Name</th>
+                  <th scope="col">Datei</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <% @order.each do |o| %>
+                  <tr>                    
+                      <td><%= @kundenAll.find(o.kunde).bibnummer %></td>
+                      <td><%=  @kundenAll.find(o.kunde).surname %>, <%=  @kundenAll.find(o.kunde).name %></td>
+                      <td><%= @datens.find(o.datei).name  %></td> 
+                      <td><%= link_to 'Edit', edit_order_path(0) %></td>
+                      <td><%= link_to 'Destroy', o, method: :delete, data: { confirm: 'Are you sure?' } %></td>                     
+                  </tr>
+                  <% end %>
+              </tbody>
+            </table>
+            <div>
+             <%= link_to massOrder_order_path(0), method: :patch, data: { confirm: 'Geld Kassiert und bestellen' } do %>
+            <button class="btn btn-primary" type="submit">Massenbestellung Besellen</button>
+            <% end%>
+            </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+</div>

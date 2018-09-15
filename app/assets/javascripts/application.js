@@ -14,4 +14,15 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require_tree .
+
+
+$(document).ready(function(){
+    $("table[role='datatable']").each(function(){
+      $(this).DataTable({
+        processing: true      
+      });
+    });  
+  })
